@@ -1,5 +1,13 @@
+#ifndef FORCA_H
+#define FORCA_H
+
 #include <iostream>
 #include <vector>
+#include <string>
+#include <fstream>
+#include "Palavra.hpp"
+#include "Score.hpp"
+#include "funcs.hpp"
  
 class Forca {
     public:
@@ -9,7 +17,7 @@ class Forca {
     private:
         //TODO: armazenar os scores?
        
-        std::vector< std::pair<std::string, int> > m_palavras; //<! palavras e sua ocorrência no Corpus
+        std::vector<Palavra> m_palavras; //<! palavras e sua ocorrência no Corpus
  
         std::string m_arquivo_scores; //<! nome do arquivo contendo os scores
  
@@ -17,9 +25,11 @@ class Forca {
  
         Dificuldade d = Dificuldade::FACIL; //<! dificuldade do jogo
  
-        std::string m_palavra_atual; //<! palavra sendo testada atualmente
+        Palavra m_palavra_atual; //<! palavra sendo testada atualmente
  
         int m_tentativas_restantes = 6; //<! tentativas restantes
+
+        std::vector<Score> score_carregado;
    
     public:
         /**
@@ -99,5 +109,12 @@ class Forca {
          * @return a quantidade de tentativas restantes.
          */
         int get_tentativas_restantes();
- 
+
+        void set_score(std::vector<Score> score);
+
+        std::vector<Score> get_score();
+
+        void display_pontuacao();
 };
+
+#endif
