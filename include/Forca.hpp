@@ -5,15 +5,15 @@
 #include <vector>
 #include <string>
 #include <fstream>
+#include <sstream>
+#include <algorithm> 
+#include "datatype.hpp"
 #include "Palavra.hpp"
 #include "Score.hpp"
 #include "funcs.hpp"
+
  
 class Forca {
-    public:
-        enum Dificuldade{
-            FACIL, MEDIO, DIFICIL
-        };
     private:
         //TODO: armazenar os scores?
        
@@ -29,7 +29,9 @@ class Forca {
  
         int m_tentativas_restantes = 6; //<! tentativas restantes
 
-        std::vector<Score> score_carregado;
+        std::vector<Score> score_carregado; // Score lido pelo arquivo
+
+        std::vector<int> sorteadas;
    
     public:
         /**
@@ -110,11 +112,15 @@ class Forca {
          */
         int get_tentativas_restantes();
 
-        void set_score(std::vector<Score> score);
+        void set_score(std::vector<Score> score);// insere o vetor de Score score em score_carregado
 
-        std::vector<Score> get_score();
+        std::vector<Score> get_score();// retorna o vetor de Score score_carregado 
 
-        void display_pontuacao();
+        void display_pontuacao();// exibe no cout os valores contidos em score_carregado formatando eles direitinho
+
+        void add_sorteadas(int id); // adiciona a frequencia id no vetor de inteiros sorteados, sao as palavras que ja sairam
+
+        void limpar_sorteadas();// da .clear no vetor de inteiros com as frequencias das palavras sorteadas
 };
 
 #endif

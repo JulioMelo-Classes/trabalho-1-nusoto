@@ -1,6 +1,6 @@
 #include "Score.hpp"
 
-Score(){
+Score::Score(){
     return;
 }
 
@@ -28,7 +28,7 @@ void Score::set_acertos(std::vector<std::string> acertos){
     this->acertos = acertos;
 }
 
-void add_acertos(std::string acerto){
+void Score::add_acertos(std::string acerto){
     this->acertos.push_back(acerto);
 }
 
